@@ -1,7 +1,3 @@
 import Detail from '../../components/detail'
-
-function DetailPage() {
-  return <Detail/>
-}
-
+const DetailPage = () => <Detail/>
 export default DetailPage

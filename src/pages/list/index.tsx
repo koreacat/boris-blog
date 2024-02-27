@@ -1,7 +1,3 @@
 import List from '../../components/list'
-
-function ListPage() {
-  return <List/>
-}
-
+const ListPage = () => <List/>
 export default ListPage

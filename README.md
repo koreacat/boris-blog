@@ -16,19 +16,20 @@ $ git clone https://github.com/koreacat/optimization-project.git
 $ npm install
 ```
 
-3. start development server
+3. 프론트 개발 환경 서버 실행 
 
 ```
-$ npm start
+$ npm run start
 ```
 
-4. start server
+4. api 서버 실행
 
 ```
 $ npm run server
 ```
-*3번의 dev server 와 다른 콘솔에서 띄워줍니다.
 
-### 질문
+5. 배포 환경 서버 실행
 
-궁금하신 부분은 강의 내 질문 & 답변 게시판 또는 해당 레포지토리의 Issues를 이용해주시기 바랍니다.
+```
+$ npm run serve
+```

@@ -1,14 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css'
+import IndexPage from './pages/index';
 import ListPage from './pages/list';
 import DetailPage from './pages/detail';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ListPage/>} />
+          <Route path="/" element={<IndexPage/>} />
+          <Route path="/list" element={<ListPage/>} />
           <Route path="/detail/:id" element={<DetailPage/>} />
         </Routes>
       </BrowserRouter>

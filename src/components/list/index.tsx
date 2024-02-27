@@ -1,11 +1,39 @@
-import './index.css'
+import { useCallback, useEffect, useState } from 'react';
+import Templates from '../common/Templates';
+import styled from 'styled-components';
+import Post from './Post';
+import { PostDto } from '../../dto/PostDto';
+import PostPlaceholder from './PostPlaceholder';
 
-function List() {
+const List = () => {
+  const [posts, setPosts] = useState<PostDto[]>([])
+
+  const fetchPosts = useCallback(async () => {
+    const res = await fetch('http://localhost:3001/posts');
+    const data = await res.json() as PostDto[];
+    setPosts([...data]);
+  }, [])
+
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
+
+  const postEls = posts.length > 0 
+  ? posts.map((post) => <Post key={post.id} post={post}/>) : new Array(10).fill(0).map((_, i) => <PostPlaceholder key={i}/>)
+
   return (
-    <div className='listArea'>
-      List
-    </div>
+    <Templates>
+      <PostList>
+        {postEls}
+      </PostList>
+    </Templates>
   )
 }
 
-export default List
+const PostList = styled.ul `
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`
+
+export default List;

@@ -1,29 +1,27 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
+import Templates from '../common/Templates'
+import { PostDto } from '../../dto/PostDto'
 
-import './index.css'
-
-function Detail() {
+const Detail = () => {
   const { id } = useParams()
-  const [article, setArticle] = useState(null)
+  const [post, setPost] = useState<PostDto | null>(null);
 
-  // 게시글 가져오기
-  const getArticle = useCallback(async (id?: string) => {
+  const fetchPost = useCallback(async (id?: string) => {
     if(!id) return;
-    const response = await fetch('http://localhost:3001/articles/' + id);
-    // setArticle(response.json());
+    const res = await fetch('http://localhost:3001/posts/' + id);
+    const data = await res.json() as PostDto;
+    setPost(data);
   }, [])
 
   useEffect(() => {
-    getArticle(id)
-  }, [getArticle, id])
+    fetchPost(id)
+  }, [fetchPost, id])
 
-  return article ? (
-    <div className={'detailArea'}>
-      Detail
-    </div>
-  ) : (
-    <h1>loading...</h1>
+  return (
+    <Templates>
+      { post ? <>{post.title}</> : <h1>loading...</h1> }
+    </Templates>
   )
 }
 
