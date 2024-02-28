@@ -25,7 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "_comment": "TODO [로딩 최적화] serve 스크립트의 -u 옵션은 압축을 사용하지 않는 옵션입니다.",
+    "_comment": "TODO [로딩 최적화 - 텍스트 압축] serve 스크립트의 -u 옵션은 압축을 사용하지 않는 옵션입니다.",
     "serve": "serve -u -s build",
     "server": "json-server --watch ./server/db.json --port 3001"
   },
