@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Templates from '../common/Templates'
 
 const Index = () => {
+  
   return (
     <Templates>
       <ProfileArea>

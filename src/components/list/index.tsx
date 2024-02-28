@@ -18,8 +18,10 @@ const List = () => {
     fetchPosts();
   }, [fetchPosts]);
 
-  const postEls = posts.length > 0 
-  ? posts.map((post) => <Post key={post.id} post={post}/>) : new Array(10).fill(0).map((_, i) => <PostPlaceholder key={i}/>)
+  const postEls = posts.map((post) => <Post key={post.id} post={post}/>);
+
+  // const postEls = posts.length > 0 
+  // ? posts.map((post) => <Post key={post.id} post={post}/>) : new Array(10).fill(0).map((_, i) => <PostPlaceholder key={i}/>)
 
   return (
     <Templates>

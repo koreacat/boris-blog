@@ -1,7 +1,9 @@
-import { useEffect, useState, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
-import Templates from '../common/Templates'
-import { PostDto } from '../../dto/PostDto'
+import { useEffect, useState, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
+import Templates from '../common/Templates';
+import { PostDto } from '../../dto/PostDto';
+import ReactMarkdown from 'react-markdown';
+import styled from 'styled-components';
 
 const Detail = () => {
   const { id } = useParams()
@@ -20,9 +22,33 @@ const Detail = () => {
 
   return (
     <Templates>
-      { post ? <>{post.title}</> : <h1>loading...</h1> }
+      <PostTitle>
+        {post?.title}
+      </PostTitle>
+
+      <PostImage src={post?.image} alt='thumnail'/>
+
+      <PostContent>
+        { post ? <ReactMarkdown children={post.content} /> : <>loading...</> }
+      </PostContent>
     </Templates>
   )
 }
+
+const PostTitle = styled.h2`
+  font-weight: 500;
+  font-size: 2.5em;
+  margin-top: 24px;
+`
+
+const PostImage = styled.img`
+  width: 100%;
+  margin-top: 12px;
+`
+
+const PostContent = styled.article`
+  margin-top: 12px;
+  line-height: 2;
+`
 
 export default Detail

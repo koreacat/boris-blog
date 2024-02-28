@@ -79,6 +79,11 @@ const Post = ({ post }: PostProps) => {
 
 const PostItem = styled.li`
   width: 100%;
+
+  a {
+    text-decoration: none; 
+    color: initial;
+  }
 `
 
 const ItemArea = styled.div`

@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <HeaderArea>
       <Link to={`/`}>
-        <HeaderTitle>Boris blog</HeaderTitle>
+        <HeaderTitle>Boris's blog</HeaderTitle>
       </Link>
       <Link to={`/list`}>
         <ListIcon />
@@ -34,6 +34,11 @@ const HeaderArea = styled.header`
   justify-content: space-between;
   padding: 12px;
   background: linear-gradient(to right, #3f3f3f, #8c8c8c, #d3d3d3);
+
+  a {
+    text-decoration: none; 
+    color: initial;
+  }
 `
 
 const HeaderTitle = styled.h1`
