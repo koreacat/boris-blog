@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import IndexPage from './pages/index';
 import ListPage from './pages/list';
 import DetailPage from './pages/detail';
+import reportWebVitals from './reportWebVitals';
 
 const App = () => {
   return (
@@ -18,3 +19,5 @@ const App = () => {
 }
 
 export default App;
+
+reportWebVitals(console.log) ;

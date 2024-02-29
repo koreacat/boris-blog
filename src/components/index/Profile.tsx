@@ -15,7 +15,6 @@ const ProfileArea = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  padding: 24px;
 `
 
 const ProfileImg = styled.img`

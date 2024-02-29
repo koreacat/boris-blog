@@ -4,32 +4,32 @@ TGC UIX 기반 개발 이해 및 활용 방안 최적화 세션 실습 프로젝
 
 ### 실행
 
-1. git clone
-
-```
-$ git clone https://github.com/koreacat/optimization-project.git
-```
-
-2. install dependencies
+install dependencies
 
 ```
 $ npm install
 ```
 
-3. 프론트 개발 환경 서버 실행 
-
-```
-$ npm run start
-```
-
-4. api 서버 실행
+api 서버 실행
 
 ```
 $ npm run server
 ```
 
-5. 배포 환경 서버 실행
+프론트 개발 환경 서버 실행 
+
+```
+$ npm run start
+```
+
+배포 환경 서버 실행
 
 ```
 $ npm run serve
+```
+
+번들 파일 생성
+
+```
+$ npm run analyzer
 ```
