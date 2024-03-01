@@ -7,7 +7,7 @@ const Gallery = () => {
 
   return (
     <div>
-      <Btn onClick={() => setIsModalOpen(true)}>Boris Gallery</Btn>
+      <Btn onClick={() => setIsModalOpen(true)}>My album</Btn>
       {/* 
         * TODO
         * [로딩 최적화 - 컴포넌트 Lazy Loading] 
@@ -25,7 +25,7 @@ const Gallery = () => {
       {/* 
         * TODO
         * [로딩 최적화 - 이미지 Preloading] 
-        * 처음 모달을 열었을 때 이미지를 로드하는 시간동안 빈화면이 출력되고 있습니다.
+        * 처음 모달을 열었을 때 이미지를 로드하기 전과 후의 모달 사이즈가 달라집니다.
       */}
       <ImageModal visible={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
