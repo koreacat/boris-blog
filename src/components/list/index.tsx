@@ -18,10 +18,14 @@ const List = () => {
     fetchPosts();
   }, [fetchPosts]);
 
+  {/* 
+    * TODO
+    * [지표 개선 - CLS(Cumulative Layout Shify)] 
+    * 리스트가 렌더링되기 전에 헤더와 푸터 사이의 영역이 비어 있다가 
+    * 리스트가 렌더링되면서 푸터가 아래로 밀리고 있습니다.
+    * 
+  */}
   const postEls = posts.map((post) => <Post key={post.id} post={post}/>);
-
-  // const postEls = posts.length > 0 
-  // ? posts.map((post) => <Post key={post.id} post={post}/>) : new Array(10).fill(0).map((_, i) => <PostPlaceholder key={i}/>)
 
   return (
     <Templates>
