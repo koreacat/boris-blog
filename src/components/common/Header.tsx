@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <HeaderArea>
       <Link to={`/`}>
-        <HeaderTitle>Boris's blog</HeaderTitle>
+        <HeaderTitle>Boris's Blog</HeaderTitle>
       </Link>
       <Link to={`/list`}>
         <ListIcon />
