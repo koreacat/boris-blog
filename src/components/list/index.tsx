@@ -20,7 +20,7 @@ const List = () => {
 
   {/* 
     * TODO
-    * [렌더링 최적화 - CLS(Cumulative Layout Shift)] 
+    * [코어 웹 바이탈 - CLS(Cumulative Layout Shift)] 
     * 리스트가 렌더링되기 전에 헤더와 푸터 사이의 영역이 비어 있다가 
     * 리스트가 렌더링되면서 푸터가 아래로 밀리고 있습니다.
     * 
