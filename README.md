@@ -4,7 +4,9 @@
 
 [과제 설명 링크](https://koreacat.notion.site/900dc9c238de41c3b53b7c236880e1e8)
 
-## 배경 스토리
+## Boris's Blog
+
+<img src="https://file.notion.so/f/f/1390bf84-e34f-460a-b535-343da27d20f4/f2836058-1618-42cf-a7de-c9509508fc2d/2.png?id=2bb9f2e0-6e19-4585-a1ce-be2719ac92c8&table=block&spaceId=1390bf84-e34f-460a-b535-343da27d20f4&expirationTimestamp=1710756000000&signature=_reYGTpiPe7lZNXi6J1Nq5aLbrkD-ycUBe_JVq8EjNY&downloadName=2.png" width='200'>
 
 "Boris's Blog"는 창의적이고 호기심 많은 고양이 보리스가 만든 블로그입니다. 보리스는 코딩에 관심이 많아 자신만의 블로그를 만들었지만, 전문적인 지식이 부족하여 성능 문제가 많은 웹사이트를 구축했습니다. 
 
