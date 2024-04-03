@@ -5,11 +5,10 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 const IMAGE_LIST = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg'];
 
 interface ImageModalProps {
-  visible: boolean;
   onClose: () => void;
 }
 
-const ImageModal = ({ visible, onClose }: ImageModalProps) => {
+const ImageModal = ({ onClose }: ImageModalProps) => {
 
   /* 
    * TODO 5.
@@ -25,8 +24,6 @@ const ImageModal = ({ visible, onClose }: ImageModalProps) => {
       thumbnail: imgSrc,
     }
   })
-
-  if (!visible) return null;
 
   return (
     <ImageModalWrapper>
