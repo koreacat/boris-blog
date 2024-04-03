@@ -28,7 +28,7 @@ const Gallery = () => {
         * 처음 모달을 열었을 때 이미지를 로드하기 전과 후의 모달 사이즈가 달라집니다.
       */}
       <Suspense fallback={null}>
-        { isModalOpen && <ImageModal onClose={() => setIsModalOpen(false)} />}
+        {isModalOpen && <ImageModal onClose={() => setIsModalOpen(false)} />}
       </Suspense>
     </div>
   )
