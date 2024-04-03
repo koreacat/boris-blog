@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { useState } from "react";
-import ImageModal from "./ImageModal";
+import { useState, Suspense, lazy } from "react";
+const ImageModal = lazy(() => import('./ImageModal'));
 
 const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,7 +11,7 @@ const Gallery = () => {
       {/* 
         * TODO 4.
         * [로딩 최적화 - 컴포넌트 Lazy Load] 
-        * 'react-image-gallery'은 모달 내에서만 사용하는 모듈이지만
+        * 'image-gallery'는 모달 내에서만 사용하는 모듈이지만
         * 메인페이지의 번들에 포함되어 있습니다.
       */}
 
@@ -27,7 +27,9 @@ const Gallery = () => {
         * [로딩 최적화 - 이미지 Preload] 
         * 처음 모달을 열었을 때 이미지를 로드하기 전과 후의 모달 사이즈가 달라집니다.
       */}
-      <ImageModal visible={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Suspense fallback={null}>
+        <ImageModal visible={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </Suspense>
     </div>
   )
 }
