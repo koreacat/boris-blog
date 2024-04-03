@@ -7,11 +7,14 @@ interface PostProps {
 }
 
 const Post = ({ post }: PostProps) => {
-  const createdTime = new Date(post.createdTime);
+  const substringWithZeroPad = (value: string | number, len: number) => {
+    const str = '0000000000' + value.toString();
+    return str.substring(str.length - len);
+  }
 
-  const zeroPad = (value: any, len: any) => {
-    const str = '0000000000' + value.toString()
-    return str.substring(str.length - len)
+  const getDateTime = () => {
+    const createdTime = new Date(post.createdTime);
+    return `${createdTime.getFullYear()}.${substringWithZeroPad(createdTime.getMonth() + 1, 2)}.${substringWithZeroPad(createdTime.getDate(), 2)}`
   }
 
   const getParametersForUnsplash = ({width, height, quality, format}: {
@@ -68,9 +71,7 @@ const Post = ({ post }: PostProps) => {
             <ItemContent>
               {removeSpecialCharacter(post.content)}
             </ItemContent>
-            <p>
-              {`${createdTime.getFullYear()}.${zeroPad(createdTime.getMonth() + 1, 2)}.${zeroPad(createdTime.getDate(), 2)}`}
-            </p>
+            <p>{getDateTime()}</p>
           </ContentArea>
         </ItemArea>
       </Link>

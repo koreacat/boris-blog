@@ -7,24 +7,24 @@ const Gallery = () => {
 
   return (
     <div>
-      <GreetButton onClick={() => setIsModalOpen(true)}>My album</GreetButton>
+      <AlbumButton onClick={() => setIsModalOpen(true)}>My album</AlbumButton>
       {/* 
         * TODO
-        * [로딩 최적화 - 컴포넌트 Lazy Loading] 
+        * [로딩 최적화 - 컴포넌트 Lazy Load] 
         * 'react-image-gallery'은 모달 내에서만 사용하는 모듈이지만
         * 메인페이지의 번들에 포함되어 있습니다.
       */}
 
       {/* 
         * TODO
-        * [로딩 최적화 - 컴포넌트 Preloading] 
+        * [로딩 최적화 - 컴포넌트 Preload] 
         * ImageModal 을 Lazy Loading 할 경우 
         * 클릭 후 리소스를 로드하기 때문에 모달이 즉시 표시되지 않습니다.
       */}
 
       {/* 
         * TODO
-        * [로딩 최적화 - 이미지 Preloading] 
+        * [로딩 최적화 - 이미지 Preload] 
         * 처음 모달을 열었을 때 이미지를 로드하기 전과 후의 모달 사이즈가 달라집니다.
       */}
       <ImageModal visible={isModalOpen} onClose={() => setIsModalOpen(false)} />
@@ -32,7 +32,7 @@ const Gallery = () => {
   )
 }
 
-const GreetButton = styled.button`
+const AlbumButton = styled.button`
   width: 200px;
   background-color: #4CAF50;
   padding: 10px 20px;
