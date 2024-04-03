@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
-const IMAGE_LIST = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg'];
+const IMAGE_LIST = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg'];
 
 interface ImageModalProps {
   visible: boolean;
@@ -10,14 +10,23 @@ interface ImageModalProps {
 }
 
 const ImageModal = ({ visible, onClose }: ImageModalProps) => {
-  const items = IMAGE_LIST.map((imgSrc) => { 
-    return {       
+
+  /* 
+   * TODO 5.
+   * [로딩 최적화 - 이미지 사이즈 최적화(로컬 이미지)] 
+   * 필요 이상의 큰 이미지 파일을 요청하여 로딩이 오래걸립니다.
+   * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
+   * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
+   */
+  const items = IMAGE_LIST.map((imgSrc) => {
+    return {
       original: imgSrc,
       originalHeight: 400,
       thumbnail: imgSrc,
-    } })
+    }
+  })
 
-  if(!visible) return null;
+  if (!visible) return null;
 
   return (
     <ImageModalWrapper>
@@ -25,7 +34,7 @@ const ImageModal = ({ visible, onClose }: ImageModalProps) => {
         <BtnClose onClick={onClose}>X</BtnClose>
         <ModalHeader>Boris Gallery</ModalHeader>
         <Modalbody>
-          <ImageGallery items={items} />
+          <ImageGallery items={items} showFullscreenButton={false} />
         </Modalbody>
       </ImageModalContainer>
     </ImageModalWrapper>

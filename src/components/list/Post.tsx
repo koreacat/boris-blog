@@ -27,7 +27,7 @@ const Post = ({ post }: PostProps) => {
   }
 
   /*
-  * TODO 
+  * TODO 7.
   * [렌더링 최적화 - 병목 코드 최적화] 
   * 많은 연산으로 병목을 일으키는 코드입니다.
   * 필요 이상의 모든 텍스트에 대해 계산하고 있습니다.
@@ -59,11 +59,12 @@ const Post = ({ post }: PostProps) => {
         <ItemArea>
           <div>
             {/* 
-              * TODO
+              * TODO 5.
               * [로딩 최적화 - 이미지 사이즈 최적화] 
               * 필요 이상의 큰 이미지 파일을 요청하여 로딩이 오래걸립니다.
               * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
-            */}
+              * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
+            */}        
             <ItemImg src={`${post.image}${getParametersForUnsplash({width: 2048, height: 2048, quality: 80, format: 'jpg'})}`} alt={'img'}/>
           </div>
           <ContentArea>

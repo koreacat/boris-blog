@@ -4,7 +4,13 @@ const Profile = () => {
 
   return (
     <ProfileArea>
-      <ProfileImg src={'/boris01.png'}/>
+      <ProfileImg src={'/boris01.png'} />
+      {/* 
+        * TODO 6.
+        * [로딩 최적화 - 폰트 최적화] 
+        * 사이즈가 큰 일반적인 폰트 포멧을 사용하고 있습니다.
+        * 사용하는 글자가 한정적입니다.
+        */}
       <h3>Hi! I'm Boris the Cat😻</h3>
     </ProfileArea>
   )

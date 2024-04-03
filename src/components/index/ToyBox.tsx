@@ -14,7 +14,7 @@ const ToyBox = () => {
     const newLeft = Math.random() * maxLeft;
 
     /*
-    * TODO 
+    * TODO 8. 
     * [렌더링 최적화 - 애니메이션 최적화] 
     * Layout shift 를 일으키는 코드입니다.
     * Top과 Left가 변경되면서 Reflow와 Repaint를 일으키고 있습니다.
@@ -47,16 +47,18 @@ const ToyBoxArea = styled.div`
 
 const Circle = styled.div`
   position: absolute;
-  top: 88px;
-  left: 88px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   background: #999;
-  transition: top 0.5s, left 0.5s;
   user-select: none;
+
+  top: 88px;
+  left: 88px;
+  transition: top 0.5s, left 0.5s;
 `
-// transition: transform 0.5s ease; // Apply transition to transform;
-// will-change: transform; // Optimize for changes in transform;
+// transform: translate(88px, 88px);
+// transition: transform 0.5s ease;
+// will-change: transform;
 
 export default ToyBox;

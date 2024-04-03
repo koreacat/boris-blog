@@ -26,6 +26,19 @@ const Detail = () => {
         {post?.title}
       </PostTitle>
 
+      {/* 
+        * 과제 1.
+        * [로딩 최적화 - 이미지 사이즈 최적화] 
+        * 필요 이상의 큰 이미지 파일을 요청하여 로딩이 오래걸립니다.
+        * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
+        * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
+        */}
+
+        {/* 
+        * 과제 4.
+        * [코어 웹 바이탈 개선 - CLS(Cumulative Layout Shift)]
+        * 이미지에 대해 비율과 크기를 보정해 Layout Shift 현상을 개선해주세요.
+        */}
       <PostImage src={post?.image} alt='thumnail'/>
 
       <PostContent>
