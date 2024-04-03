@@ -9,7 +9,7 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         {/* 
-          * TODO
+          * TODO 1.
           * [로딩 최적화 - 코드 스플릿팅] 
           * 각 페이지 별로 필요한 모듈이 따로 있지만 하나의 번들파일로 되어 있습니다.
         */}
