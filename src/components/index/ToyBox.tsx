@@ -19,11 +19,8 @@ const ToyBox = () => {
     * Layout shift 를 일으키는 코드입니다.
     * Top과 Left가 변경되면서 Reflow와 Repaint를 일으키고 있습니다.
     * */
-    circleRef.current.style.top = `${newTop}px`;
-    circleRef.current.style.left = `${newLeft}px`;
-
-    // const transformValue = `translate(${newLeft}px, ${newTop}px)`;
-    // circleRef.current.style.transform = transformValue;
+    const transformValue = `translate(${newLeft}px, ${newTop}px)`;
+    circleRef.current.style.transform = transformValue;
   };
 
   return (
@@ -53,12 +50,9 @@ const Circle = styled.div`
   background: #999;
   user-select: none;
 
-  top: 88px;
-  left: 88px;
-  transition: top 0.5s, left 0.5s;
+  transform: translate(88px, 88px);
+  transition: transform 0.5s ease;
+  will-change: transform;
 `
-// transform: translate(88px, 88px);
-// transition: transform 0.5s ease;
-// will-change: transform;
 
 export default ToyBox;

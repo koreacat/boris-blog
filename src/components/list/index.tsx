@@ -32,12 +32,16 @@ const List = () => {
     * 뷰포트에 보이지 않는 이미지는 나중에 로드되도록 최적화해주세요.
     * 
   */}
-  const postEls = posts.map((post) => <Post key={post.id} post={post}/>);
+
+  const getPostEls = () => {
+    if(posts.length <= 0) return new Array(10).fill(null).map(_ => <PostPlaceholder/>);
+    return posts.map((post) => <Post key={post.id} post={post}/>);
+  }
 
   return (
     <Templates>
       <PostList>
-        {postEls}
+        {getPostEls()}
       </PostList>
     </Templates>
   )
