@@ -1,9 +1,26 @@
 import styled from 'styled-components';
-import { useState, Suspense, lazy } from "react";
-const ImageModal = lazy(() => import('./ImageModal'));
+import { useState, Suspense, lazy, useEffect, LazyExoticComponent } from "react";
+const ImageModal = lazyWithPreload(() => import('./ImageModal'));
+
+type LazyWithPreloadReturnType<T extends React.ComponentType<any>> = LazyExoticComponent<T> & {
+  preload: () => void;
+};
+
+function lazyWithPreload<T extends React.ComponentType<any>>(importFunction: () => Promise<{ default: T }>): LazyWithPreloadReturnType<T> {
+  const Component = lazy(importFunction) as LazyWithPreloadReturnType<T>;
+  Component.preload = () => { importFunction() };
+  return Component;
+}
 
 const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    ImageModal.preload();
+
+    const img = new Image();
+    img.src = './0.jpg';
+  }, [])
 
   return (
     <div>
