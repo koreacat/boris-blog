@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
-const IMAGE_LIST = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-const IMAGE_FORMAT = '.jpg';
+const IMAGE_LIST = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg'];
 
 interface ImageModalProps {
   onClose: () => void;
@@ -12,9 +11,9 @@ interface ImageModalProps {
 const ImageModal = ({ onClose }: ImageModalProps) => {
   const items = IMAGE_LIST.map((imgSrc) => {
     return {
-      original: `${imgSrc}${IMAGE_FORMAT}`,
+      original: imgSrc,
       originalHeight: 400,
-      thumbnail: `${imgSrc}${IMAGE_FORMAT}`,
+      thumbnail: imgSrc,
     }
   })
 
