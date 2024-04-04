@@ -37,7 +37,7 @@ const Detail = () => {
         {/* 
         * 과제 4.
         * [코어 웹 바이탈 개선 - CLS(Cumulative Layout Shift)]
-        * 이미지에 대해 비율과 크기를 보정해 Layout Shift 현상을 개선해주세요.
+        * 이미지 비율과 크기를 보정해 Layout Shift 현상을 개선해주세요.
         */}
       <PostImage src={post?.image} alt='thumnail'/>
 
