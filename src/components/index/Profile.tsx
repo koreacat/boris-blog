@@ -22,10 +22,14 @@ const Profile = () => {
         * 사이즈가 큰 일반적인 폰트 포멧을 사용하고 있습니다.
         * 사용하는 글자가 한정적입니다.
         */}
-      <h3>Hi! I'm Boris the Cat😻</h3>
+      <ProfileTitle>Hi! I'm Boris the Cat😻</ProfileTitle>
     </ProfileArea>
   )
 }
+
+const ProfileTitle = styled.h3`
+  font-family: 'PermanentMarker';
+`
 
 const ProfileArea = styled.div`
   display: flex;

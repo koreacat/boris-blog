@@ -48,6 +48,7 @@ const HeaderArea = styled.header`
 `
 
 const HeaderTitle = styled.h1`
+  font-family: 'RubikScribble';
   color: white;
   font-size: 24px;
 `
