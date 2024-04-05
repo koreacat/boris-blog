@@ -1,9 +1,25 @@
 import styled from 'styled-components';
-import { useState } from "react";
-import ImageModal from "./ImageModal";
+import { useState, Suspense, lazy, useEffect, LazyExoticComponent } from "react";
+const ImageModal = lazyWithPreload(() => import('./ImageModal'));
+
+type LazyWithPreloadReturnType<T extends React.ComponentType<any>> = LazyExoticComponent<T> & {
+  preload: () => void;
+};
+
+function lazyWithPreload<T extends React.ComponentType<any>>(importFunction: () => Promise<{ default: T }>): LazyWithPreloadReturnType<T> {
+  const Component = lazy(importFunction) as LazyWithPreloadReturnType<T>;
+  Component.preload = () => { importFunction() };
+  return Component;
+}
 
 const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    ImageModal.preload();
+    const img = new Image();
+    img.src = './0.jpg';
+  }, [])
 
   return (
     <div>
@@ -27,7 +43,9 @@ const Gallery = () => {
         * [로딩 최적화 - 이미지 Preload] 
         * 처음 모달을 열었을 때 이미지를 로드하기 전과 후의 모달 사이즈가 달라집니다.
       */}
-      { isModalOpen && <ImageModal onClose={() => setIsModalOpen(false)} />}
+      <Suspense fallback={null}>
+        { isModalOpen && <ImageModal onClose={() => setIsModalOpen(false)} />}
+      </Suspense>
     </div>
   )
 }

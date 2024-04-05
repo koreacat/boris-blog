@@ -33,24 +33,10 @@ const Post = ({ post }: PostProps) => {
   * 필요 이상의 모든 텍스트에 대해 계산하고 있습니다.
   * 파라미터로 넘어온 문자열에서 일부 특수문자를 제거하는 함수
   * */
+
   const removeSpecialCharacter = (str: string) => {
-    const removeCharacters = ['#', '_', '*', '~', '&', ';', '!', '[', ']', '`', '>', '\n', '=', '-']
-    let _str = str
-    let i = 0,
-      j = 0
-
-    for (i = 0; i < removeCharacters.length; i++) {
-      j = 0
-      while (j < _str.length) {
-        if (_str[j] === removeCharacters[i]) {
-          _str = _str.substring(0, j).concat(_str.substring(j + 1))
-          continue
-        }
-        j++
-      }
-    }
-
-    return _str
+    const pattern = /[#_*~&;!\[\]`>\n=-]/g;
+    return str.substring(0, 300).replace(pattern, '');
   }
 
   return (
@@ -65,7 +51,7 @@ const Post = ({ post }: PostProps) => {
               * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
               * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
             */}        
-            <ItemImg src={`${post.image}${getParametersForUnsplash({width: 2048, height: 2048, quality: 80, format: 'jpg'})}`} alt={'img'}/>
+            <ItemImg src={`${post.image}${getParametersForUnsplash({width: 256, height: 256, quality: 80, format: 'jpg'})}`} alt={'img'}/>
           </div>
           <ContentArea>
             <h2>{post.title}</h2>
