@@ -40,7 +40,7 @@ const Detail = () => {
        */}
       <PostImage
         src={`${post?.image}${getParametersForUnsplash({
-          width: 768,
+          width: 768 * 2,
           quality: 80,
           format: "webp",
         })}`}
