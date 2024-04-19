@@ -1,9 +1,21 @@
 import styled from 'styled-components';
-import { useState } from "react";
-import ImageModal from "./ImageModal";
+import { Suspense, lazy, useState, useEffect } from "react";
+// import ImageModal from "./ImageModal";
+
+const ImageModal = lazy(()=>import( './ImageModal'));
 
 const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const handleMouseEnter = () => {
+  //   const _ = import('./ImageModal');
+  // }
+
+  useEffect(() => {
+    const _ = import('./ImageModal');
+    const img = new Image();
+    img.src = './0.jpg';
+  },[])
 
   return (
     <div>
@@ -27,7 +39,9 @@ const Gallery = () => {
         * [로딩 최적화 - 이미지 Preload] 
         * 처음 모달을 열었을 때 이미지를 로드하기 전과 후의 모달 사이즈가 달라집니다.
       */}
-      { isModalOpen && <ImageModal onClose={() => setIsModalOpen(false)} />}
+      <Suspense fallback={null}>
+        { isModalOpen && <ImageModal onClose={() => setIsModalOpen(false)} />}
+      </Suspense>
     </div>
   )
 }
