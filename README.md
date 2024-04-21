@@ -41,3 +41,9 @@ $ npm run serve
 ```
 $ npm run analyzer
 ```
+
+### 과제5 - [로딩 최적화 - 불필요한 css 제거]: 불필요한 css를 제거해야하는 상황과 방법에 대해 조사해 README.md 에 작성해주세요.
+사용자가 방문할 페이지에서 사용되지 않거나, 참조되지 않는 불필요한 css인 경우에 CSS 최적화 과정을 통하여 로딩 최적화를 진행할 수 있습니다.
+
+PurgeCSS를 사용하여 불필요한 CSS를 제거하거나, Webpack의 CssMinimizerWebpackPlugin을 사용하여 압축을 수행하거나,
+code spliting 과정을 통하여 현재 화면에서 필요한 CSS만 불러오는 과정을 통해 최적화를 진행할 수 있습니다.
