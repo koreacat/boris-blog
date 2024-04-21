@@ -19,7 +19,7 @@ const List = () => {
   }, [fetchPosts]);
 
   {/* 
-    * TODO 9.
+    * TODO 9. - O
     * [코어 웹 바이탈 개선 - CLS(Cumulative Layout Shift)] 
     * 리스트가 렌더링되기 전에 헤더와 푸터 사이의 영역이 비어 있다가 
     * 리스트가 렌더링되면서 푸터가 아래로 밀리고 있습니다.
@@ -34,10 +34,15 @@ const List = () => {
   */}
   const postEls = posts.map((post) => <Post key={post.id} post={post}/>);
 
+  const getPostEls = () => {
+    if(posts.length <= 0) return new Array(10).fill(null).map(_ => <PostPlaceholder/>);
+    return posts.map((post) => <Post key={post.id} post={post}/>);
+  }
+
   return (
     <Templates>
       <PostList>
-        {postEls}
+        {getPostEls()}
       </PostList>
     </Templates>
   )
