@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const port = 5000;
 const path = require('path');
+const compression = require('compression');
 
 const header = {
   /*
-   * TODO 2.
-   * [로딩 최적화 - 텍스트 압축] 
+   * TODO 2. - O
+   * [로딩 최적화 - 텍스트 압축]
    * 텍스트 파일들이 압축되지 않은 상태로 전송되고 있습니다.
    */
 
@@ -23,6 +24,7 @@ const header = {
   },
 }
 
+app.use(compression());
 app.use(express.static(path.join(__dirname, '../build'), header));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
