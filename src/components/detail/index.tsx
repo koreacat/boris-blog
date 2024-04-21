@@ -36,13 +36,13 @@ const Detail = () => {
         */}
 
         {/* 
-        * 과제 4.
+        * 과제 4. - O
         * [코어 웹 바이탈 개선 - CLS(Cumulative Layout Shift)]
         * 이미지 비율과 크기를 보정해 Layout Shift 현상을 개선해주세요.
         */}
       <picture>
-        <source srcSet={`${post?.image}${getParametersForUnsplash({width: 1536, height: 1536, quality: 80, format: 'webp'})}`} type={'image/webp'}/>
-        <PostImage src={`${post?.image}${getParametersForUnsplash({width: 1536, height: 1536, quality: 80, format: 'jpeg'})}`} alt='thumnail'/>
+        <source srcSet={`${post?.image}${getParametersForUnsplash({width: 1536, height: 1056, quality: 80, format: 'webp'})}`} type={'image/webp'}/>
+        <PostImage src={`${post?.image}${getParametersForUnsplash({width: 1536, height: 1056, quality: 80, format: 'jpeg'})}`} alt='thumnail'/>
       </picture>
 
       <PostContent>
@@ -61,6 +61,7 @@ const PostTitle = styled.h2`
 const PostImage = styled.img`
   width: 100%;
   margin-top: 12px;
+  aspect-ratio: 1536/1056;
 `
 
 const PostContent = styled.article`
