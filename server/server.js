@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 5000;
 const path = require('path');
-const compression = require('compression')
+const compression = require('compression');
 
 const header = {
   /*
@@ -18,9 +18,17 @@ const header = {
    */
 
   setHeaders: (res, path) => {
-    res.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.setHeader('Expires', '-1');
-    res.setHeader('Pragma', 'no-cache');
+    // res.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    // res.setHeader('Expires', '-1');
+    // res.setHeader('Pragma', 'no-cache');
+    // res.setHeader('Cache-Control', 'max-age=10');
+    if(path.endsWith('.html')){  
+      res.setHeader('Cache-Control', 'no-cache')
+    } else if (path.endsWith('.js') || path.endsWith('.css') || path.endsWith('.jpg')) {
+        res.setHeader('Cache-Control', 'public max-age=31536000');
+    } else {
+        res.setHeader('Cache-Control', 'no-store');
+    }
   },
 }
 
