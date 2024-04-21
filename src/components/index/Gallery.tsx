@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Suspense, lazy, useEffect, useState } from "react";
+import { IMAGE_LIST } from './ImageModal';
 
 const ImageModal = lazy(() => import('./ImageModal'));
 
@@ -8,6 +9,12 @@ const Gallery = () => {
 
   useEffect(() => {
     import('./ImageModal');
+
+    const img = new Image();
+
+    IMAGE_LIST.forEach((imagePath) => {
+      img.src = imagePath;
+    })
   }, [])
 
   return (
@@ -28,7 +35,7 @@ const Gallery = () => {
       */}
 
       {/* 
-        * TODO 4.
+        * TODO 4. - O
         * [로딩 최적화 - 이미지 Preload] 
         * 처음 모달을 열었을 때 이미지를 로드하기 전과 후의 모달 사이즈가 달라집니다.
       */}
