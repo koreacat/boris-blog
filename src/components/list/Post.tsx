@@ -1,67 +1,17 @@
 import { Link } from "react-router-dom";
 import { PostDto } from "../../dto/PostDto";
 import styled from "styled-components";
-import { getParametersForUnsplash } from "../../utils/image.utils";
+import { useRef } from "react";
+import { getDateTime, removeSpecialCharacter } from "./post.util";
+import { useIntersectingImage } from "./useIntersectingImage";
 
 interface PostProps {
   post: PostDto;
 }
 
 const Post = ({ post }: PostProps) => {
-  const substringWithZeroPad = (value: string | number, len: number) => {
-    const str = "0000000000" + value.toString();
-    return str.substring(str.length - len);
-  };
-
-  const getDateTime = () => {
-    const createdTime = new Date(post.createdTime);
-    return `${createdTime.getFullYear()}.${substringWithZeroPad(
-      createdTime.getMonth() + 1,
-      2
-    )}.${substringWithZeroPad(createdTime.getDate(), 2)}`;
-  };
-
-  /*
-   * TODO 7.
-   * [렌더링 최적화 - 병목 코드 최적화]
-   * 많은 연산으로 병목을 일으키는 코드입니다.
-   * 필요 이상의 모든 텍스트에 대해 계산하고 있습니다.
-   * 파라미터로 넘어온 문자열에서 일부 특수문자를 제거하는 함수
-   * */
-  const removeSpecialCharacter = (str: string) => {
-    const removeCharacters = [
-      "#",
-      "_",
-      "*",
-      "~",
-      "&",
-      ";",
-      "!",
-      "[",
-      "]",
-      "`",
-      ">",
-      "\n",
-      "=",
-      "-",
-    ];
-    let _str = str;
-    let i = 0,
-      j = 0;
-
-    for (i = 0; i < removeCharacters.length; i++) {
-      j = 0;
-      while (j < _str.length) {
-        if (_str[j] === removeCharacters[i]) {
-          _str = _str.substring(0, j).concat(_str.substring(j + 1));
-          continue;
-        }
-        j++;
-      }
-    }
-
-    return _str;
-  };
+  const imageRef = useRef<HTMLImageElement>(null);
+  useIntersectingImage({ imageRef, post });
 
   return (
     <PostItem>
@@ -75,21 +25,12 @@ const Post = ({ post }: PostProps) => {
              * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
              * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
              */}
-            <ItemImg
-              src={`${post.image}${getParametersForUnsplash({
-                width: 256,
-                height: 256,
-                quality: 80,
-                format: "webp",
-                crop: true,
-              })}`}
-              alt={"img"}
-            />
+            <ItemImg ref={imageRef} alt={"img"} />
           </div>
           <ContentArea>
             <h2>{post.title}</h2>
             <ItemContent>{removeSpecialCharacter(post.content)}</ItemContent>
-            <p>{getDateTime()}</p>
+            <p>{getDateTime(post.createdTime)}</p>
           </ContentArea>
         </ItemArea>
       </Link>
