@@ -1,10 +1,14 @@
 import styled from 'styled-components';
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 
 const ImageModal = lazy(() => import('./ImageModal'));
 
 const Gallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    import('./ImageModal');
+  }, [])
 
   return (
     <div>
@@ -17,7 +21,7 @@ const Gallery = () => {
       */}
 
       {/* 
-        * TODO 4.
+        * TODO 4. - O
         * [로딩 최적화 - 컴포넌트 Preload] 
         * ImageModal 을 Lazy Loading 할 경우 
         * 클릭 후 리소스를 로드하기 때문에 모달이 즉시 표시되지 않습니다.
