@@ -12,15 +12,19 @@ const header = {
    */
 
   /*
-   * TODO 3.
+   * TODO 3. - O
    * [로딩 최적화 - 캐시 최적화] 
    * 요청에 대해 캐시가 적용되어 있지 않습니다.
    */
 
   setHeaders: (res, path) => {
-    res.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.setHeader('Expires', '-1');
-    res.setHeader('Pragma', 'no-cache');
+    if(path.endsWith('.html')){  
+      res.setHeader('Cache-Control', 'no-cache')
+    } else if (path.endsWith('.js') || path.endsWith('.css') || path.endsWith('.jpg')) {
+        res.setHeader('Cache-Control', 'public max-age=31536000');
+    } else {
+        res.setHeader('Cache-Control', 'no-store');
+    }
   },
 }
 
