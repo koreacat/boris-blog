@@ -2,12 +2,15 @@ import { Link } from 'react-router-dom'
 import { PostDto } from '../../dto/PostDto';
 import styled from 'styled-components';
 import { getParametersForUnsplash } from '../../utils/image';
+import { useEffect, useRef } from 'react';
 
 interface PostProps {
   post: PostDto;
 }
 
 const Post = ({ post }: PostProps) => {
+  const imgRef = useRef(null);
+
   const substringWithZeroPad = (value: string | number, len: number) => {
     const str = '0000000000' + value.toString();
     return str.substring(str.length - len);
@@ -30,6 +33,30 @@ const Post = ({ post }: PostProps) => {
     return str.substring(0, 300).replace(pattern, '');
   }
 
+  useEffect(() => {
+		const callback: IntersectionObserverCallback = (entries, observer) => {
+			entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // @ts-ignore
+          entry.target.src = entry.target.dataset.src;
+          observer.unobserve(entry.target);
+        }
+        
+      });
+		}
+	
+		const options = {}
+		const observer = new IntersectionObserver(callback, options);
+
+    if(imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+		return (() => {
+			observer.disconnect();
+		})
+	}, [])
+
   return (
     <PostItem>
       <Link to={`/detail/${post.id}`}>
@@ -42,7 +69,7 @@ const Post = ({ post }: PostProps) => {
               * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
               * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
             */}        
-            <ItemImg src={`${post.image}${getParametersForUnsplash({width: 256, height: 256, quality: 80, format: 'jpg'})}`} alt={'img'}/>
+            <ItemImg ref={imgRef} data-src={`${post.image}${getParametersForUnsplash({width: 256, height: 256, quality: 80, format: 'jpg'})}`} alt={'img'}/>
           </div>
           <ContentArea>
             <h2>{post.title}</h2>
