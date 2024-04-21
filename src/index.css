@@ -28,9 +28,9 @@ body {
   font-family: RubikScribble;
   src:
     local('RubikScribble'),
-    url('./fonts/RubikScribble-Regular.woff2'),
-    url('./fonts/RubikScribble-Regular.woff'),
-    url('./fonts/RubikScribble-Regular.ttf');
+    url('./fonts/subset-RubikScribble-Regular.woff2'),
+    url('./fonts/subset-RubikScribble-Regular.woff'),
+    url('./fonts/subset-RubikScribble-Regular.ttf');
   font-display: swap;
 }
 
