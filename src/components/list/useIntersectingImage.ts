@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect, useState } from "react";
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { getParametersForUnsplash } from "../../utils/image.utils";
 import { PostDto } from "../../dto/PostDto";
 
@@ -8,6 +8,7 @@ interface Args {
 }
 export const useIntersectingImage = ({ imageRef, post }: Args) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const observerRef = useRef<IntersectionObserver>();
 
   const loadIntersectingImage: IntersectionObserverCallback = useCallback(
     (entries) => {
@@ -31,9 +32,9 @@ export const useIntersectingImage = ({ imageRef, post }: Args) => {
   );
 
   useEffect(() => {
-    const observer = new IntersectionObserver(loadIntersectingImage);
+    observerRef.current = new IntersectionObserver(loadIntersectingImage);
 
-    if (imageRef.current) observer.observe(imageRef.current);
-    return () => observer.unobserve(imageRef.current as HTMLImageElement);
+    if (imageRef.current) observerRef.current.observe(imageRef.current);
+    return () => observerRef.current?.disconnect();
   }, [imageRef, loadIntersectingImage]);
 };
