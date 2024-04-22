@@ -6,6 +6,8 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { getParametersForUnsplash } from "../../utils/image.utils";
 
+const IMAGE_HEIGHT = 500;
+
 const Detail = () => {
   const { id } = useParams();
   const [post, setPost] = useState<PostDto | null>(null);
@@ -40,10 +42,12 @@ const Detail = () => {
        */}
       <PostImage
         src={`${post?.image}${getParametersForUnsplash({
-          width: 768 * 2,
+          height: IMAGE_HEIGHT * 2,
           quality: 80,
           format: "webp",
         })}`}
+        height={IMAGE_HEIGHT}
+        fetchPriority="high"
         alt="thumnail"
       />
 
@@ -61,8 +65,8 @@ const PostTitle = styled.h2`
 `;
 
 const PostImage = styled.img`
-  width: 100%;
   margin-top: 12px;
+  object-fit: contain;
 `;
 
 const PostContent = styled.article`

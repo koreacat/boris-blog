@@ -5,13 +5,21 @@ export const getParametersForUnsplash = ({
   format,
   crop,
 }: {
-  width: number;
+  width?: number;
   height?: number;
   quality: number;
-  format: string;
+  format?: string;
   crop?: boolean;
 }) => {
-  return `?w=${width}${height ? `&h=${height}` : ""}&q=${quality}&fm=${format}${
-    crop ? "&fit=crop" : ""
-  }`;
+  const optionQuery = [
+    { key: "w", value: width },
+    { key: "h", value: height },
+    { key: "q", value: quality },
+    { key: "fm", value: format },
+  ]
+    .map(({ key, value }) => (value ? `${key}=${value}` : ""))
+    .filter((el) => el.length)
+    .join("&");
+
+  return `?${optionQuery}${crop ? "&fit=crop" : ""}`;
 };
