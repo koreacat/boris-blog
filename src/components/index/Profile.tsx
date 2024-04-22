@@ -11,13 +11,17 @@ const Profile = () => {
         * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
         * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
         */}
-      <ProfileImg src={'/boris01.jpg'} />
+      {/* <ProfileImg src={'/boris01.jpg'} /> */}
       {/* 
         * TODO 6.
         * [로딩 최적화 - 폰트 최적화] 
         * 사이즈가 큰 일반적인 폰트 포멧을 사용하고 있습니다.
         * 사용하는 글자가 한정적입니다.
         */}
+      <picture>
+        <source srcSet={'/boris01.webp'} type={'image/webp'} />
+        <ProfileImg src={'/boris01.jpg'} />
+      </picture>
       <ProfileTitle>Hi! I'm Boris the Cat😻</ProfileTitle>
     </ProfileArea>
   )

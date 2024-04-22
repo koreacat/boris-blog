@@ -16,14 +16,22 @@ body {
 
 @font-face {
   font-family: PermanentMarker;
-  src: url('./fonts/PermanentMarker-Regular.ttf');
+  src: 
+    url('./fonts/PermanentMarker-Regular.woff2'),
+    url('./fonts/PermanentMarker-Regular.woff'),
+    url('./fonts/PermanentMarker-Regular.ttf');
   font-display: block;
+  /* unicode-range: u+0041, u+0042, u+0043, u+0044, u+0045, u+0047, u+0049, u+004b, u+004c, u+004d, u+004e, u+004f, u+0050, u+0052; */
 }
 
 @font-face {
   font-family: RubikScribble;
-  src: url('./fonts/RubikScribble-Regular.ttf');
+  src: 
+  url('./fonts/RubikScribble-Regular.woff2'),
+  url('./fonts/RubikScribble-Regular.woff'),
+  url('./fonts/RubikScribble-Regular.ttf');
   font-display: block;
+  unicode-range: u+0042, U+006F, U+0072, U+0069, U+0073, U+006C, U+0067, U+0027	;
 }
 
 ::-webkit-scrollbar-track {

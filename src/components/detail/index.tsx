@@ -16,6 +16,15 @@ const Detail = () => {
     setPost(data);
   }, [])
 
+  const getParametersForUnsplash = ({width, height, quality, format}: {
+    width: number;
+    height: number;
+    quality: number;
+    format: string;
+  }) => {
+    return `?w=${width}&h=${height}&q=${quality}&fm=${format}&fit=crop`
+  }
+
   useEffect(() => {
     fetchPost(id)
   }, [fetchPost, id])
@@ -39,7 +48,10 @@ const Detail = () => {
         * [코어 웹 바이탈 개선 - CLS(Cumulative Layout Shift)]
         * 이미지 비율과 크기를 보정해 Layout Shift 현상을 개선해주세요.
         */}
-      <PostImage src={post?.image} alt='thumnail'/>
+      {/* <PostImage src={post?.image} alt='thumnail'/> */}
+
+      <PostImage src={`${post?.image}${getParametersForUnsplash({width: 1536, height: 1536, quality: 80, format: 'jpg'})}`} alt='thumnail'/>
+
 
       <PostContent>
         { post ? <ReactMarkdown children={post.content} /> : <>loading...</> }
@@ -57,6 +69,7 @@ const PostTitle = styled.h2`
 const PostImage = styled.img`
   width: 100%;
   margin-top: 12px;
+  aspect-ratio: 1;
 `
 
 const PostContent = styled.article`
