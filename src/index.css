@@ -22,7 +22,13 @@ body {
 
 @font-face {
   font-family: RubikScribble;
-  src: url('./fonts/RubikScribble-Regular.ttf');
+  /* 우선 순위 지정 */
+  src: 
+  local('RubikScribble-Regular'),
+  /* url('./fonts/RubikScribble-Regular.woff2'), */
+  /* url('./fonts/RubikScribble-Regular.woff'), */
+  url('./fonts/RubikScribble-Regular.ttf'),
+  ;
   font-display: block;
 }
 
