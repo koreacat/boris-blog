@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { PostDto } from '../../dto/PostDto';
 import styled from 'styled-components';
+import useIntersectionImg from '../util/useIntersectionImg';
 
 interface PostProps {
   post: PostDto;
@@ -65,8 +66,7 @@ const Post = ({ post }: PostProps) => {
               * 적절한 이미지의 사이즈는 영역 사이즈의 2배 정도 입니다.
               * 최적화된 이미지 포멧을 사용해 사이즈를 줄일 수 있습니다.
             */}        
-            {/* <ItemImg src={`${post.image}${getParametersForUnsplash({width: 2048, height: 2048, quality: 80, format: 'jpg'})}`} alt={'img'}/> */}
-            <ItemImg src={`${post.image}${getParametersForUnsplash({width: 256, height: 256, quality: 80, format: 'webp'})}`} alt={'webp'}/>
+            <ItemImg ref={useIntersectionImg()} data-src={`${post.image}${getParametersForUnsplash({width: 256, height: 256, quality: 80, format: 'webp'})}`} alt={'webp'}/>
           </div>
           <ContentArea>
             <h2>{post.title}</h2>
