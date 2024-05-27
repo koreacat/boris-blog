@@ -6,17 +6,21 @@ import { PostDto } from '../../dto/PostDto';
 import PostPlaceholder from './PostPlaceholder';
 
 const List = () => {
-  const [posts, setPosts] = useState<PostDto[]>([])
+  const [posts, setPosts] = useState<PostDto[]>([]);
+  const [loading, setLoading] = useState(true);  // 로딩 상태 관리를 위한 상태 추가
 
   const fetchPosts = useCallback(async () => {
+    setLoading(true);  // 데이터 요청 전 로딩 상태 true로 설정
     const res = await fetch('http://localhost:3001/posts');
     const data = await res.json() as PostDto[];
     setPosts([...data]);
-  }, [])
+    setLoading(false);  // 데이터 로딩 완료 후 로딩 상태 false로 설정
+  }, []);
 
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
+
 
   {/* 
     * TODO 9.
@@ -32,7 +36,8 @@ const List = () => {
     * 뷰포트에 보이지 않는 이미지는 나중에 로드되도록 최적화해주세요.
     * 
   */}
-  const postEls = posts.map((post) => <Post key={post.id} post={post}/>);
+  const postEls = loading ?  Array.from({ length: 12 }).map((_, index) => <PostPlaceholder key={index} />)  :
+  posts.map((post) => <Post key={post.id} post={post}/>);
 
   return (
     <Templates>
