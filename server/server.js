@@ -17,9 +17,19 @@ const header = {
    */
 
   setHeaders: (res, path) => {
-    res.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.setHeader('Expires', '-1');
-    res.setHeader('Pragma', 'no-cache');
+    if(path.endsWit('.htnl')){
+      res.setHeader('Cache-Control', 'no-cache');
+    }else if(path.endsWith('.js') || path.endsWith('.css') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.gif') || path.endsWith('.svg') || path.endsWith('.ico'))
+    {
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+    }else{
+      res.setHeader('Cache-Control', 'no-stroe');
+    }
+    // res.setHeader('Cache-Control', 'max-age=10');
+
+    // res.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    // res.setHeader('Expires', '-1');
+    // res.setHeader('Pragma', 'no-cache');
   },
 }
 
